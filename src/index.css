@@ -1,0 +1,51 @@
+/*.clearfix{*/
+    /*overflow:auto;*/
+    /*_height:1%;*/
+/*}*/
+
+.clearfix:after{
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+
+.common{
+    border: 1px solid #e603a7;
+    background: aquamarine;
+}
+
+
+.Comment{
+    background: aliceblue;
+    border: 1px solid #c9e5a1;
+    padding: 4px 10px;
+    margin-bottom: 20px;
+}
+
+.Comment .UserInfo{
+    float: left;
+}
+
+.Comment .UserInfo .Avatar{
+    height: 40px;
+    width: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.Comment .UserInfo .UserInfo-name{
+    text-align: center;
+    color: orangered;
+}
+
+.Comment .Comment-details{
+    float: left;
+    margin-left: 20px;
+}
+
+.Comment .Comment-details .Comment-text{
+    height: 44px;
+    color:hotpink;
+}

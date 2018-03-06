@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="main"></div>
+    <script src="../node_modules/react/umd/react.production.min.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // const commonClass = ReactClass({
+        //     border: '1px solid #e603a7',
+        //     background: 'aquamarine'
+        // });
+
+        // function tick() {
+        //     const common = <div>
+        //         <h2>龙儿我是过儿</h2>
+        //         <p>It's {new Date().toLocaleTimeString()}.</p>
+        //     </div>;
+        //     ReactDOM.render(
+        //         common,
+        //         document.getElementById('main')
+        //     );
+        // }
+        //
+        // setInterval(tick,1000);
+
+        
+        
+        // function Welcome(props) {
+        //     return(
+        //         <div>
+        //             <h3>龙儿我是过儿</h3>
+        //             <p>hello,nice to meet you {props.name}</p>
+        //         </div>
+        //     )
+        // }
+        //
+        // function List() {
+        //     return (
+        //         <div>
+        //             <Welcome name="龙儿" />
+        //             <Welcome name="慧宝宝" />
+        //             <Welcome name="宝宝" />
+        //         </div>
+        //     )
+        // }
+
+
+
+        
+        // function formatDate() {
+        //     return(new Date().toLocaleString());
+        // }
+        //
+        // function Avatar(props) {
+        //     return(
+        //         <img src={props.user.avatarUrl}
+        //              alt={props.user.name}
+        //              className="Avatar" />
+        //     )
+        // }
+        //
+        // function UserInfo(props) {
+        //     return(
+        //         <div className="UserInfo ">
+        //             <Avatar user={props.user} />
+        //             <div className="UserInfo-name">{props.user.name}</div>
+        //         </div>
+        //     )
+        // }
+        // function Comment(props) {
+        //     return(
+        //         <div className="Comment clearfix">
+        //             <UserInfo user={props.author} />
+        //             <div className="Comment-details">
+        //                 <div className="Comment-text">{props.text}</div>
+        //                 <div className="Comment-data">{formatDate()}</div>
+        //             </div>
+        //         </div>
+        //     )
+        // }
+        //
+        // const comment = {
+        //     text:'山无棱，天地和，乃敢与君绝！',
+        //     author:{
+        //         name: '龙儿',
+        //         avatarUrl: './avatar.jpg'
+        //     }
+        // };
+        // ReactDOM.render(
+        //     <div>
+        //         <Comment
+        //             text = {comment.text}
+        //             author = {comment.author} />
+        //         <Comment
+        //             text = {comment.text}
+        //             author = {comment.author} />
+        //     </div>,
+        //     document.getElementById('main')
+        // );
+
+
+
+
+        // // function Clock(props) {
+        // //     return(
+        // //         <p>It's {props.date.toLocaleString()}</p>
+        // //     );
+        // // }
+        //
+        // class Clock extends React.Component{
+        //     constructor(props){
+        //         super(props);
+        //         this.state = {
+        //             date: new Date(),
+        //         }
+        //     }
+        //
+        //     componentDidMount(){
+        //         this.timeID = setInterval(
+        //             () => this.tick(),
+        //             1000
+        //         );
+        //     }
+        //
+        //     componentWillUnmount(){
+        //         clearInterval(this.timeID);
+        //     }
+        //
+        //     tick(){
+        //         this.setState({
+        //             date: new Date()
+        //         });
+        //     }
+        //     render(){
+        //         return(
+        //             <p>It's {this.state.date.toLocaleString()}</p>
+        //         );
+        //     }
+        // }
+        //
+        // class ActionLink extends React.Component{
+        //     handleClick(e){
+        //         e.preventDefault();
+        //         console.log(123456);
+        //     }
+        //
+        //     constructor(props){
+        //         super(props);
+        //         this.state = {
+        //             text: "点击有惊喜哦！"
+        //         }
+        //     }
+        //
+        //     render(){
+        //         return(
+        //             <a href="#" onClick={this.handleClick}>{this.state.text}</a>
+        //         )
+        //     }
+        // }
+        //
+        // class Info extends React.Component {
+        //     render() {
+        //         return (
+        //             <div>
+        //                 <h3>hello {this.props.name}</h3>
+        //                 <Clock date={this.props.date}/>
+        //                 <ActionLink text={this.props.text}/>
+        //             </div>
+        //         );
+        //     }
+        // }
+        //
+        // const info = {
+        //     name: "longer",
+        //     // text: "点我有惊喜哦！"
+        //     // date: new Date().toLocaleString()
+        // };
+        //
+        // ReactDOM.render(
+        //     <div>
+        //         <Info name={info.name} />
+        //         <Info name={info.name} />
+        //         <Info name={info.name} />
+        //     </div>,
+        //     document.getElementById('main')
+        // );
+
+
+
+
+
+        class Toggle extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {isToggleOn : true};
+                this.handleClick = this.handleClick.bind(this);
+            }
+
+            handleClick(){
+                this.setState(prevState => ({
+                    isToggleOn : !prevState.isToggleOn
+                }));
+                console.log(2333333);
+            }
+
+            render(){
+                return(
+                    <button onClick={this.handleClick}>{this.state.isToggleOn? "开" : "关"}</button>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Toggle/>,
+            document.getElementById('main')
+        );
+    </script>
+</body>
+</html>
