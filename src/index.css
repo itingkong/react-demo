@@ -49,3 +49,15 @@
     height: 44px;
     color:hotpink;
 }
+
+.Button{
+    min-width: 54px;
+    padding: 4px 10px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background: #3eafe6;
+    cursor: pointer;
+    font-size: 16px;
+    color:#fff;
+}

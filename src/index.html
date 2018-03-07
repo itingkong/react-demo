@@ -159,7 +159,7 @@
 
             render(){
                 return(
-                    <a href="#" onClick={this.handleClick}>{this.state.text}</a>
+                    <a href="#" onClick={(e) => this.handleClick(e)}>{this.state.text}</a>
                 )
             }
         }
