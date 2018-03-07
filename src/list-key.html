@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list-key</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="main"></div>
+<script src="../node_modules/react/umd/react.production.min.js"></script>
+<script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+   // const items = ['苹果','梨', '香蕉', '橘子', '草莓'];
+   // const List = items.map((item) =>
+   //     <li>{item}</li>
+   // );
+   
+   function ListItem() {
+       const items = ['苹果','梨', '香蕉', '橘子', '草莓', '柚子', '火龙果'];
+       const List = items.map((item) =>
+           <li>{item}</li>
+       );
+
+       return (
+           <ul>
+               {List}
+           </ul>
+       )
+   }
+
+    ReactDOM.render(
+        <ListItem />,
+        document.getElementById('main')
+    );
+</script>
+</body>
+</html>
