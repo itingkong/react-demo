@@ -50,9 +50,26 @@
             )
         }
     }
+    
+    function Mailbox(props) {
+        const unMsg = props.unMsg;
+        return(
+            <div>
+                <h3>温馨提示：</h3>
+                {unMsg.length > 0 &&
+                    <h4> 您有{unMsg.length}未读短信</h4>
+                }
+            </div>
+        )
+    }
+
+    const messages = ['React', 'Re: React', 'Re:Re: React'];
 
     ReactDOM.render(
-        <LoginCtr />,
+        <div>
+            <LoginCtr />
+            <Mailbox unMsg={messages} />
+        </div>,
         document.getElementById('main')
     );
 </script>
