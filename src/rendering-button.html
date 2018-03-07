@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>renderring-button</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="main"></div>
+<script src="../node_modules/react/umd/react.production.min.js"></script>
+<script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    class LoginCtr extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                login: 'login',
+                logout: 'logout',
+                isLoginIn: true
+            }
+        }
+
+        handleLoginClick(){
+            if(this.state.isLoginIn === true){
+                alert('您已登录！');
+            }else{
+                alert('欢迎回来！');
+            }
+        }
+
+        handleLogoutClick(){
+            if(this.state.isLoginIn === true){
+                alert('欢迎回来！');
+            }else{
+                alert('请先登录');
+            }
+        }
+
+        render(){
+            return(
+                <div>
+                    <button className="Button"
+                            onClick={() => this.handleLoginClick()}>
+                        {this.state.login}</button>
+                    <button className="Button-danger"
+                            onClick={() => this.handleLogoutClick()}>
+                        {this.state.logout}</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <LoginCtr />,
+        document.getElementById('main')
+    );
+</script>
+
+</body>
+</html>

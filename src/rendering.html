@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rendering</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="main"></div>
+<script src="../node_modules/react/umd/react.production.min.js"></script>
+<script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    // function UserGreeting(props) {
+    //     return(<h3>欢迎回来！</h3>);
+    // }
+    //
+    // function GuestGreeting(props) {
+    //     return(<h3>请先登录</h3>);
+    // }
+    //
+    // function Greeting(props) {
+    //     const isLoginIn = props.isLoginIn;
+    //     if(isLoginIn){
+    //         return(<UserGreeting />);
+    //     }else{
+    //         return(<GuestGreeting />);
+    //     }
+    // }
+
+    // ReactDOM.render(
+    //     <Greeting isLoginIn={false} />,
+    //     document.getElementById('main')
+    // );
+    
+    function LoginBtn(props) {
+        return(
+            <button className="Button" onClick={props.onClick}>login</button>
+        );
+    }
+
+    function LogoutBtn(props) {
+        return(
+            <button className="Button" onClick={props.onClick}>logout</button>
+        )
+    }
+    ReactDOM.render(
+        <div>
+            <LoginBtn />
+            <LogoutBtn />
+        </div>,
+        document.getElementById('main')
+    );
+</script>
+</body>
+</html>

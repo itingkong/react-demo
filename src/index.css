@@ -53,10 +53,24 @@
 .Button{
     min-width: 54px;
     padding: 4px 10px;
+    margin-right: 10px;
     outline: none;
     border: none;
     border-radius: 4px;
     background: #3eafe6;
+    cursor: pointer;
+    font-size: 16px;
+    color:#fff;
+}
+
+.Button-danger{
+    min-width: 54px;
+    padding: 4px 10px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background: #e62525;
     cursor: pointer;
     font-size: 16px;
     color:#fff;
