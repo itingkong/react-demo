@@ -107,117 +107,87 @@
 
 
 
-        // // function Clock(props) {
-        // //     return(
-        // //         <p>It's {props.date.toLocaleString()}</p>
-        // //     );
-        // // }
-        //
-        // class Clock extends React.Component{
-        //     constructor(props){
-        //         super(props);
-        //         this.state = {
-        //             date: new Date(),
-        //         }
-        //     }
-        //
-        //     componentDidMount(){
-        //         this.timeID = setInterval(
-        //             () => this.tick(),
-        //             1000
-        //         );
-        //     }
-        //
-        //     componentWillUnmount(){
-        //         clearInterval(this.timeID);
-        //     }
-        //
-        //     tick(){
-        //         this.setState({
-        //             date: new Date()
-        //         });
-        //     }
-        //     render(){
-        //         return(
-        //             <p>It's {this.state.date.toLocaleString()}</p>
-        //         );
-        //     }
+        // function Clock(props) {
+        //     return(
+        //         <p>It's {props.date.toLocaleString()}</p>
+        //     );
         // }
-        //
-        // class ActionLink extends React.Component{
-        //     handleClick(e){
-        //         e.preventDefault();
-        //         console.log(123456);
-        //     }
-        //
-        //     constructor(props){
-        //         super(props);
-        //         this.state = {
-        //             text: "点击有惊喜哦！"
-        //         }
-        //     }
-        //
-        //     render(){
-        //         return(
-        //             <a href="#" onClick={this.handleClick}>{this.state.text}</a>
-        //         )
-        //     }
-        // }
-        //
-        // class Info extends React.Component {
-        //     render() {
-        //         return (
-        //             <div>
-        //                 <h3>hello {this.props.name}</h3>
-        //                 <Clock date={this.props.date}/>
-        //                 <ActionLink text={this.props.text}/>
-        //             </div>
-        //         );
-        //     }
-        // }
-        //
-        // const info = {
-        //     name: "longer",
-        //     // text: "点我有惊喜哦！"
-        //     // date: new Date().toLocaleString()
-        // };
-        //
-        // ReactDOM.render(
-        //     <div>
-        //         <Info name={info.name} />
-        //         <Info name={info.name} />
-        //         <Info name={info.name} />
-        //     </div>,
-        //     document.getElementById('main')
-        // );
 
-
-
-
-
-        class Toggle extends React.Component{
+        class Clock extends React.Component{
             constructor(props){
                 super(props);
-                this.state = {isToggleOn : true};
-                this.handleClick = this.handleClick.bind(this);
+                this.state = {
+                    date: new Date(),
+                }
             }
 
-            handleClick(){
-                this.setState(prevState => ({
-                    isToggleOn : !prevState.isToggleOn
-                }));
-                console.log(2333333);
+            componentDidMount(){
+                this.timeID = setInterval(
+                    () => this.tick(),
+                    1000
+                );
             }
 
+            componentWillUnmount(){
+                clearInterval(this.timeID);
+            }
+
+            tick(){
+                this.setState({
+                    date: new Date()
+                });
+            }
             render(){
                 return(
-                    <button onClick={this.handleClick}>{this.state.isToggleOn? "开" : "关"}</button>
+                    <p>It's {this.state.date.toLocaleString()}</p>
                 );
             }
         }
 
+        class ActionLink extends React.Component{
+            handleClick(e){
+                e.preventDefault();
+                console.log(123456);
+            }
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    text: "点击有惊喜哦！"
+                }
+            }
+
+            render(){
+                return(
+                    <a href="#" onClick={this.handleClick}>{this.state.text}</a>
+                )
+            }
+        }
+
+        class Info extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <h3>hello {this.props.name}</h3>
+                        <Clock date={this.props.date}/>
+                        <ActionLink text={this.props.text}/>
+                    </div>
+                );
+            }
+        }
+
+        const info = {
+            name: "longer",
+            // text: "点我有惊喜哦！"
+            // date: new Date().toLocaleString()
+        };
+
         ReactDOM.render(
-            <Toggle/>,
+            <div>
+                <Info name={info.name} />
+                <Info name={info.name} />
+                <Info name={info.name} />
+            </div>,
             document.getElementById('main')
         );
     </script>

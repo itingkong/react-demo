@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>button</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="main"></div>
+    <script src="../node_modules/react/umd/react.production.min.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        class Toggle extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {isToggleOn : true};
+                this.handleClick = this.handleClick.bind(this);
+            }
+
+            handleClick(){
+                this.setState(prevState => ({
+                    isToggleOn : !prevState.isToggleOn
+                }));
+                console.log(2333333);
+            }
+
+            render(){
+                return(
+                    <button onClick={this.handleClick}>{this.state.isToggleOn? "开" : "关"}</button>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Toggle/>,
+            document.getElementById('main')
+        );
+    </script>
+
+</body>
+</html>
