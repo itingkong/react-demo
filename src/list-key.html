@@ -16,23 +16,43 @@
    //     <li>{item}</li>
    // );
    
-   function ListItem() {
-       const items = ['苹果','梨', '香蕉', '橘子', '草莓', '柚子', '火龙果'];
-       const List = items.map((item) =>
-           <li>{item}</li>
+   // function ListItem() {
+   //     const items = ['苹果','梨', '香蕉', '橘子', '草莓', '柚子', '火龙果'];
+   //     const List = items.map((item, index) =>
+   //         <li key={index}>{item}</li>
+   //     );
+   //
+   //     return (
+   //         <ul>
+   //             {List}
+   //         </ul>
+   //     )
+   // }
+
+   function ListItem(props) {
+       return(
+           <li>{props.value}</li>
+       );
+   }
+   
+   function List(props) {
+       const numbers = props.numbers;
+       const ListItems = numbers.map((number) =>
+           <ListItem key={number.toString()} value={number} />
        );
 
        return (
            <ul>
-               {List}
+               {ListItems}
            </ul>
        )
    }
 
-    ReactDOM.render(
-        <ListItem />,
-        document.getElementById('main')
-    );
+   const numbers = ['苹果','梨', '香蕉', '橘子', '草莓'];
+   ReactDOM.render(
+       <List numbers={numbers} />,
+       document.getElementById('main')
+   );
 </script>
 </body>
 </html>
