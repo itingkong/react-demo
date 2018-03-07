@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rendering-if-else</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="main"></div>
+<script src="../node_modules/react/umd/react.production.min.js"></script>
+<script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    function Warning(props) {
+        if(!props.warn){
+            return null;
+        }
+
+        return(
+            <div className="warning">warning</div>
+        )
+    }
+
+    class Page extends React.Component{
+        constructor(props){
+            super(props);
+            this.handleToggleClick = this.handleToggleClick.bind(this);
+            this.state={
+                warn: true
+            };
+        }
+
+        handleToggleClick(){
+            this.setState((prevState) => ({
+                warn : !prevState.warn
+            }));
+        }
+
+        render(){
+            return(
+                <div>
+                    <Warning warn={this.state.warn} />
+                    <button className="Button" onClick={this.handleToggleClick}>
+                        {this.state.warn? '隐藏' : '显示'}</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <Page />,
+        document.getElementById('main')
+    );
+</script>
+
+</body>
+</html>
