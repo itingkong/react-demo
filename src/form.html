@@ -11,9 +11,40 @@
 <script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 <script type="text/babel">
+    class NameForm extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                value : ''
+            }
 
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+        }
+        handleSubmit(event){
+            this.setState({value: event.target.value});
+        }
+
+        handleChange(event){
+            event.preventDefault();
+            alert(this.state.value + 'be submitted');
+        }
+
+        render(){
+            return(
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        name:
+                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="submit"/>
+                </form>
+            );
+        }
+    }
     ReactDOM.render(
-
+        <NameForm />,
+        document.getElementById('main')
     );
 </script>
 </body>
