@@ -22,12 +22,12 @@
             this.handleSubmit = this.handleSubmit.bind(this);
         }
         handleSubmit(event){
-            this.setState({value: event.target.value});
+            event.preventDefault();
+            alert(this.state.value + ' be submitted');
         }
 
         handleChange(event){
-            event.preventDefault();
-            alert(this.state.value + 'be submitted');
+            this.setState({value: event.target.value});
         }
 
         render(){
