@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stateUp</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="main"></div>
+<script src="../node_modules/react/umd/react.production.min.js"></script>
+<script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    function BoilingVerdict(props) {
+        if(props.celsius >= 100){
+            return(<p>水沸腾了</p>);
+        }else{
+            return(<p>水还没开</p>);
+        }
+    }
+    
+    class Calculator extends React.Component{
+        constructor(props){
+            super(props);
+            this.handleChange = this.handleChange.bind(this);
+            this.state = {
+                temperature: ''
+            };
+        };
+
+        handleChange(e){
+            this.setState({temperature:e.target.value});
+        };
+
+        render(){
+            // const temperature = this.state.temperature;
+            return(
+                <fieldset>
+                    <legend>输入温度：</legend>
+                    <input type="text"
+                        value={this.state.temperature}
+                        onChange={this.handleChange}/>
+                    <BoilingVerdict celsius={parseFloat(this.state.temperature)} />
+                </fieldset>
+            )
+        };
+    }
+    ReactDOM.render(
+        <Calculator />,
+        document.getElementById('main')
+    );
+</script>
+</body>
+</html>
