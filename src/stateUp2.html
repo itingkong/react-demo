@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stateUp-2</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="main"></div>
+<script src="../node_modules/react/umd/react.production.min.js"></script>
+<script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    const scaleNames = {
+        c: 'Celsius',
+        f: 'Fahrenheit'
+    }
+
+    function BoilingVerdict(props) {
+        if(props.name ==='Celsius' && props.temp >= 100){
+            return(<p>水沸腾了</p>);
+        }else if(props.name ==='Celsius' && props.temp < 100){
+            return(<p>水还没开</p>);
+        }else if(props.name ==='Fahrenheit' && props.temp >= 212){
+            return(<p>水沸腾了</p>);
+        }else{
+            return(<p>水还没开</p>);
+        }
+    }
+    
+    class TemperatureInput extends React.Component{
+        constructor(props){
+            super(props);
+            this.handleChange = this.handleChange.bind(this);
+            this.state = {
+                temperature: ''
+            };
+        };
+
+        handleChange(e){
+            this.setState({temperature:e.target.value});
+        };
+
+        render(){
+            const temperature = this.state.temperature;
+            const scale = this.props.scale;
+            return(
+                <fieldset>
+                    <legend>请输入{scaleNames[scale]}温度：</legend>
+                    <input type="text"
+                        value={temperature}
+                        onChange={this.handleChange}/>
+                    <BoilingVerdict name={scaleNames[scale]} temp={parseFloat(temperature)} />
+                </fieldset>
+            )
+        };
+    }
+
+    class Calculator extends React.Component{
+        render(){
+            return(
+                <div>
+                    <TemperatureInput scale='c' />
+                    <TemperatureInput scale='f' />
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <Calculator />,
+        document.getElementById('main')
+    );
+</script>
+</body>
+</html>
