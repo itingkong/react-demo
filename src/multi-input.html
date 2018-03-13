@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>multi-input</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="main"></div>
+<script src="../node_modules/react/umd/react.production.min.js"></script>
+<script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    class MultiInput extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                makeSure: true,
+                defaultNum:3
+            };
+
+            this.handleInputChange = this.handleInputChange.bind(this);
+        }
+
+        handleInputChange(event){
+            const target = event.target;
+            const value = target.type === "checkbox" ? target.checked : target.value;
+            const name = target.name;
+
+            this.setState({
+                [name]:value
+            })
+        }
+
+        render(){
+            return(
+                <form >
+                    <label>
+                        请确认：
+                        <input type="checkbox"
+                        name="makeSure"
+                        checked={this.state.makeSure}
+                        onChange={this.handleInputChange} />
+                    </label>
+                    <br/>
+                    <label>
+                        defaultNum:
+                        <input type="number"
+                        name="defaultNum"
+                        value={this.state.defaultNum}
+                        onChange={this.handleInputChange}/>
+                    </label>
+                    <br/>
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <MultiInput />,
+        document.getElementById('main')
+    );
+</script>
+</body>
+</html>
