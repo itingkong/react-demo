@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="main"></div>
+<script src="../node_modules/react/umd/react.production.min.js"></script>
+<script src="../node_modules/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    class Greeting extends React.Component{
+        render(){
+            return(
+                <h3>hello, {this.props.name}</h3>
+            );
+        }
+    }
+
+    Greeting.defaultProps = {
+        name: 'longer'
+    };
+
+    ReactDOM.render(
+        <Greeting name='guoer' />, // 如果不定义name属性，则输出为默认name：longer；
+        document.getElementById('main')
+    );
+</script>
+</body>
+</html>
